@@ -64,9 +64,9 @@
 // id "example1". Also automatically hyperlinks URLS and user mentions and
 // hashtags.
 var config1 = {
-  "id": '625766673656717312',
+  "id": '345170787868762112',
   "domId": 'example1',
-  "maxTweets": 5,
+  "maxTweets": 1,
   "enableLinks": true
 };
 twitterFetcher.fetch(config1);
@@ -199,29 +199,36 @@ function momentDateFormatter(date, dateString) {
 twitterFetcher.fetch(config6);
 
 
-// ##### CommonJS example (e.g. Browserify) #####
-// The result of this example is identical to example 1, but it's meant for
-// usage through Browserify or compatible bundler.
-var fetcher = require('twitter-fetcher'); //debowerify may be needed
-var config7 = {
-  "id": '345170787868762112',
-  "domId": 'example1',
-  "maxTweets": 1,
+// // ##### CommonJS example (e.g. Browserify) #####
+// // The result of this example is identical to example 1, but it's meant for
+// // usage through Browserify or compatible bundler.
+// var fetcher = require('twitter-fetcher'); //debowerify may be needed
+// var config7 = {
+//   "id": '345170787868762112',
+//   "domId": 'example1',
+//   "maxTweets": 1,
+//   "enableLinks": true
+// };
+// fetcher.fetch(config7);
+
+
+// // ##### AMD example (e.g. Require.js) #####
+// // The result of this example is identical to example 1, but it's meant for
+// // usage with Require.js or similar loader.
+// require(['twitter-fetcher'], function (fetcher) {
+//   var config7 = {
+//     "id": '345170787868762112',
+//     "domId": 'example1',
+//     "maxTweets": 1,
+//     "enableLinks": true
+//   };
+//   fetcher.fetch(config7);
+// });
+
+var config8 = {
+  "id": "625766673656717312",
+  "domId": 'example7',
+  "maxTweets": 5,
   "enableLinks": true
 };
-fetcher.fetch(config7);
-
-
-// ##### AMD example (e.g. Require.js) #####
-// The result of this example is identical to example 1, but it's meant for
-// usage with Require.js or similar loader.
-require(['twitter-fetcher'], function (fetcher) {
-  var config7 = {
-    "id": '345170787868762112',
-    "domId": 'example1',
-    "maxTweets": 1,
-    "enableLinks": true
-  };
-  fetcher.fetch(config7);
-});
-
+twitterFetcher.fetch(config8);
