@@ -207,9 +207,12 @@
 
           if (getElementsByClassName(tmp[x], 'retweet-credit').length > 0) {
             rts.push(true);
+            specialClasses.push("retweet");
           } else {
             rts.push(false);
+            specialClasses.push("");
           }
+
           x++;
         }
       }
@@ -220,6 +223,7 @@
         times.splice(maxTweets, (times.length - maxTweets));
         rts.splice(maxTweets, (rts.length - maxTweets));
         images.splice(maxTweets, (images.length - maxTweets));
+        specialClasses.splice(maxTweets, (specialClasses.length - maxTweets));
       }
 
       var arrayTweets = [];
@@ -303,11 +307,13 @@
               '<img src="' + extractImageUrl(images[n]) + '" alt="Image from tweet" />' +
               '</div>';
         }
-        op += '</div>'
+
+        op += '</div>' // closes div.single-tweet
 
         arrayTweets.push(op);
         n++;
       }
+
       handleTweets(arrayTweets);
       inProgress = false;
 
