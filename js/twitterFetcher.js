@@ -180,7 +180,7 @@
             if (rts[x]){
               specialClasses.push("retweet");
             } else {
-              specialClasses.push(undefined);
+              specialClasses.push("");
             }
 
 
@@ -251,7 +251,8 @@
         }
 
 
-        var op = '<div class="single-tweet ' + specialClasses[n] '">';
+        var op = '<div class="single-tweet ' + specialClasses[n] + '">';
+
         if (parseLinks) {
           if (targetBlank) {
             targetLinksToNewWindow(tweets[n]);
