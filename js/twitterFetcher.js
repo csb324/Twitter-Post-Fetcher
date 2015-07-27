@@ -158,21 +158,32 @@
       var images = [];
       var rts = [];
       var tids = [];
+      var specialClasses = [];
       var x = 0;
 
       if (supportsClassName) {
         var tmp = div.getElementsByClassName('tweet');
         while (x < tmp.length) {
+
           if (tmp[x].getElementsByClassName('retweet-credit').length > 0) {
             rts.push(true);
           } else {
             rts.push(false);
           }
+
           if (!rts[x] || rts[x] && showRts) {
             tweets.push(tmp[x].getElementsByClassName('e-entry-title')[0]);
             tids.push(tmp[x].getAttribute('data-tweet-id'));
             authors.push(tmp[x].getElementsByClassName('p-author')[0]);
             times.push(tmp[x].getElementsByClassName('dt-updated')[0]);
+
+            if (rts[x]){
+              specialClasses.push("retweet");
+            } else {
+              specialClasses.push(undefined);
+            }
+
+
             if (tmp[x].getElementsByClassName('inline-media')[0] !== undefined) {
               images.push(tmp[x].getElementsByClassName('inline-media')[0]);
             } else {
@@ -215,6 +226,7 @@
       var x = tweets.length;
       var n = 0;
       while(n < x) {
+
         if (typeof(formatterFunction) !== 'string') {
           var datetimeText = times[n].getAttribute('datetime');
           var newDate = new Date(times[n].getAttribute('datetime')
@@ -237,7 +249,9 @@
             times[n].textContent = dateString;
           }
         }
-        var op = '';
+
+
+        var op = '<div class="single-tweet ' + specialClasses[n] '">';
         if (parseLinks) {
           if (targetBlank) {
             targetLinksToNewWindow(tweets[n]);
@@ -288,6 +302,7 @@
               '<img src="' + extractImageUrl(images[n]) + '" alt="Image from tweet" />' +
               '</div>';
         }
+        op += '</div>'
 
         arrayTweets.push(op);
         n++;
